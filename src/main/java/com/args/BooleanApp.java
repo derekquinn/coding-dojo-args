@@ -12,7 +12,10 @@ public class BooleanApp {
 	
 	public int portFlagValue(String input) {
 		
-		
-		return 0;
+		if (input.contains("-p")) {
+			return 0;
+		}else {
+			return 1;
+		}
 	}
 }

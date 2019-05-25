@@ -32,8 +32,9 @@ public class AppTest
 	@Test
     public void negativeInteger()
     {
-       assertEquals(0, booleanApp.portFlagValue("5"));
-      
+       assertEquals(1, booleanApp.portFlagValue("5"));
+       assertEquals(0,booleanApp.portFlagValue("-p"));
+       assertEquals(0, booleanApp.portFlagValue("-p9231239 888 blue"));
     }
 
     /**
