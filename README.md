@@ -1,7 +1,7 @@
 # Coding Dojo - Args
 
 
-##About this Kata
+## About this Kata
 
 This Kata is presented in Robert C.. Martin’s book “Clean Code”, chapter 14.
 
@@ -16,6 +16,6 @@ You should write a parser for this kind of arguments. This parser takes a schema
 Once the schema has been specified, the program should pass the actual argument list to the args parser. It will verify that the arguments match the schema. The program can then ask the args parser for each of the values, using the names of the flags. The values are returned with the correct types, as specified in the schema.
 
 ## Participants in this Dojo
--- @derekquinn
--- @TheoEisenstein
--- @SchuylerVO
+### @derekquinn
+### @TheoEisenstein
+### @SchuylerVO
