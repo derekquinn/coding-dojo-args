@@ -11,6 +11,15 @@ public class AppTest
     extends TestCase
 {
     /**
+     * Test to decide whether case is logged or not.
+     *
+     */
+	public void logBoolean()
+	{
+		
+	}
+	
+	 /**
      * Make sure you have a test with a negative integer (confusing - sign)
      *
      */
