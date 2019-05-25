@@ -9,4 +9,10 @@ public class BooleanApp {
 			return false;
 		}
 	}
+	
+	public int portFlagValue(String input) {
+		
+		
+		return 0;
+	}
 }

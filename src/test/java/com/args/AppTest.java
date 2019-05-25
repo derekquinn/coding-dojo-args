@@ -29,9 +29,11 @@ public class AppTest
      * Make sure you have a test with a negative integer (confusing - sign)
      *
      */
+	@Test
     public void negativeInteger()
     {
-       
+       assertEquals(0, booleanApp.portFlagValue("5"));
+      
     }
 
     /**
