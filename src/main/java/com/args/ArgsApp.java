@@ -4,7 +4,7 @@ package com.args;
  * Hello world!
  *
  */
-public class App 
+public class ArgsApp 
 {
     public static void main( String[] args )
     {
