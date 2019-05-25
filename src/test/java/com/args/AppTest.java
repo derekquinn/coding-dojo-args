@@ -20,8 +20,9 @@ public class AppTest
 	@Test
 	public void logBoolean()
 	{
-		assertEquals(true, booleanApp.logTrue());
-		
+		assertEquals(false, booleanApp.logTrue("-z"));
+		assertEquals(true, booleanApp.logTrue("-l"));
+		assertEquals(false, booleanApp.logTrue("l"));
 	}
 	
 	 /**

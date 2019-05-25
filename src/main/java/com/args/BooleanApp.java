@@ -2,7 +2,11 @@ package com.args;
 
 public class BooleanApp {
 
-	public boolean logTrue() {
-		return true;
+	public boolean logTrue(String input) {
+		if (input.contains("-l")) {
+		 	return true;
+		} else {
+			return false;
+		}
 	}
 }
