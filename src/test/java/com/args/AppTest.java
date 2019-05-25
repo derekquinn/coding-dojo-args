@@ -1,21 +1,26 @@
 package com.args;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
 
 /**
  * Unit test for simple App.
  */
 public class AppTest 
-    extends TestCase
+    
 {
     /**
      * Test to decide whether case is logged or not.
      *
      */
+	
+	BooleanApp booleanApp = new BooleanApp();
+	
+	@Test
 	public void logBoolean()
 	{
+		assertEquals(true, booleanApp.logTrue());
 		
 	}
 	
