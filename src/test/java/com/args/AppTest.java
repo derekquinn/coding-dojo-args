@@ -11,28 +11,27 @@ public class AppTest
     extends TestCase
 {
     /**
-     * Create the test case
+     * Make sure you have a test with a negative integer (confusing - sign)
      *
-     * @param testName name of the test case
      */
-    public AppTest( String testName )
+    public void negativeInteger()
     {
-        super( testName );
+       
     }
 
     /**
-     * @return the suite of tests being tested
+     * The order of the arguments need not match the order given in the schema.
      */
-    public static Test suite()
+    public void outOfOrder()
     {
-        return new TestSuite( AppTest.class );
+        return;
     }
 
     /**
-     * Rigourous Test :-)
+     * have some tests that suitable default values are correctly assigned if flags given in the schema are missing in the args given.
      */
-    public void testApp()
+    public void defaultValues()
     {
-        assertTrue( true );
+       return;
     }
 }
