@@ -2,52 +2,25 @@ package com.args;
 
 import java.util.Scanner;
 
-/**
- * Hello world!
- *
- */
 public class ArgsApp 
 {
     public static void main( String[] args )
-    {
+    {	
+    	// Objects
     	Scanner scan = new Scanner(System.in);
-    	SchemaFlagIdentifier schemaFlagIdentifier = new SchemaFlagIdentifier();
+    	SchemaUtility schemaUtility = new SchemaUtility();
+    	
+    	// Variables pertaining to user input.
     	String prompt = "Please enter user input";
-    	
-    	String result = getString(scan, prompt);
-    	
-    	boolean log = schemaFlagIdentifier.logTrue(result);
-    	
-    	int portFlag = schemaFlagIdentifier.portFlagValue(result);
-        
-        String directory = schemaFlagIdentifier.directoryFlagValue(result);
-        
-        System.out.println(log);
-        System.out.println(portFlag);
-        System.out.println(directory);
+    	String userInput = schemaUtility.getUserInput(scan, prompt);
+        String directory = schemaUtility.directoryFlagValue(userInput);
+    	boolean log = schemaUtility.getLogValue(userInput);	
+    	int portFlag = schemaUtility.getPortFlagValue(userInput);      
+
+        // Results
+        System.out.println("Log Value: " + log);
+        System.out.println("Port Value: " + portFlag);
+        System.out.println("Directory Value: " + directory);
     }
-    
-    public static String getString(Scanner scnr, String prompt) {
-		
-		System.out.print(prompt);
-		return scnr.nextLine();
-	}
-    
-    public static String getStringMatchingRegex(Scanner scnr, String prompt, String regex) {
-		boolean isValid;
-		String input;
-		do {
-			input = getString(scnr, prompt);
-		
-			if (input.matches(regex)) {
-				isValid = true;
-			} else {
-				System.out.println("Input must match the appropriate format.");
-				isValid = false;
-			}
-		
-		} while (!isValid);
-		return input;
-    
-    }
+
 }

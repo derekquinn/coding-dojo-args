@@ -1,11 +1,13 @@
 package com.args;
 
-public class SchemaFlagIdentifier {
+import java.util.Scanner;
+
+public class SchemaUtility {
 
 	String directoryDefaultValue = "Directory Missing. Please try again.";
 	String portDefaultValue = "Port missing. Please try again.";
 
-	public boolean logTrue(String input) {
+	public boolean getLogValue(String input) {
 		if (input.contains("-l")) {
 			return true;
 		} else {
@@ -13,7 +15,7 @@ public class SchemaFlagIdentifier {
 		}
 	}
 
-	public int portFlagValue(String input) {
+	public int getPortFlagValue(String input) {
 
 		int logIndex = input.indexOf("-l");
 		int portIndex = input.indexOf("-p");
@@ -86,4 +88,31 @@ public class SchemaFlagIdentifier {
 			input.replace("-1","");
 		}
 	}
+	
+    
+    public String getUserInput(Scanner scnr, String prompt) {
+		
+		System.out.print(prompt);
+		return scnr.nextLine();
+	}
+    
+  
+    
+//    public static String getStringMatchingRegex(Scanner scnr, String prompt, String regex) {
+//		boolean isValid;
+//		String input;
+//		do {
+//			input = getUserInput(scnr, prompt);
+//		
+//			if (input.matches(regex)) {
+//				isValid = true;
+//			} else {
+//				System.out.println("Input must match the appropriate format.");
+//				isValid = false;
+//			}
+//		
+//		} while (!isValid);
+//		return input;
+//    
+//    }
 }
