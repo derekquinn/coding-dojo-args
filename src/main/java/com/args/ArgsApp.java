@@ -8,6 +8,8 @@ public class ArgsApp
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+    	SchemaFlagIdentifier schemaFlagIdentifier = new SchemaFlagIdentifier();
+    	int portFlag = schemaFlagIdentifier.portFlagValue("-l -p 8080 -d /usr/logs");
+        System.out.println(portFlag);
     }
 }

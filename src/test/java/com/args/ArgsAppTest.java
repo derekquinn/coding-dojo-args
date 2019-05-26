@@ -34,10 +34,10 @@ public class ArgsAppTest
     public void isPortFlagPresent()
     {
        assertEquals(1, schemaFlagIdentifier.portFlagValue("5"));
-       assertEquals(8080,schemaFlagIdentifier.portFlagValue("-p"));
-       assertEquals(8080, schemaFlagIdentifier.portFlagValue("-p9231239 888 blue"));
+       assertEquals(8080,schemaFlagIdentifier.portFlagValue("-l -p 8080 -d /usr/logs"));
+       assertEquals(8080, schemaFlagIdentifier.portFlagValue("-l -p 8080 -d /usr/logs"));
     }
-	
+
 	/**
 	 * Test to decide if directory flag is present in user input string. 
 	 */
@@ -51,6 +51,12 @@ public class ArgsAppTest
 		
 	}
 
+	@Test
+	public void returnPortValueAsAnInteger() {
+			
+		assertEquals(8080, schemaFlagIdentifier.portFlagValue("-l -p 8080 -d /usr/logs"));
+	}
+	
     /**
      * The order of the arguments need not match the order given in the schema.
      */
