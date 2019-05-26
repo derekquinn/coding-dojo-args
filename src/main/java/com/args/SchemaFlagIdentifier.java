@@ -21,9 +21,10 @@ public class SchemaFlagIdentifier {
 		if (input.contains("-l")) {
 			input.replace("-l", "");
 		}
-		
+
 		if (input.contains("-p")) {
 			int portValue = 1;
+
 			if (input.contains("-d") && directoryIndex > portIndex) {
 				String portString = input.substring(portIndex + 2, directoryIndex);
 				portString = portString.trim();
@@ -37,7 +38,7 @@ public class SchemaFlagIdentifier {
 				portValue = Integer.parseInt(portString);
 				return portValue;
 			}
-			
+
 			return portValue;
 
 		} else {
@@ -47,11 +48,37 @@ public class SchemaFlagIdentifier {
 
 	public String directoryFlagValue(String input) {
 
-		if (input.contains("-d")) {
-			return "/usr/logs";
-		} else {
-			return directoryDefaultValue;
+		int logIndex = input.indexOf("-l");
+		int portIndex = input.indexOf("-p");
+		int directoryIndex = input.indexOf("-d");
+		String directory;
+
+		if (input.contains("-l")) {
+			input.replace("-l", "");
 		}
+
+		if (input.contains("-d")) {
+
+			if (input.contains("-p") && directoryIndex > portIndex) {
+
+				directory = input.substring(directoryIndex+2);
+				directory = directory.trim();
+				return directory;
+			}
+
+			if (input.contains("-p") && directoryIndex < portIndex) {
+
+				directory = input.substring( directoryIndex + 2, portIndex);
+				directory = directory.trim();
+				return directory;
+			}
+		}
+
+		else {
+			return "1";
+		}
+
+		return "1";
 
 	}
 }

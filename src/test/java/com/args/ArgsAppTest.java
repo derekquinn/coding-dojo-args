@@ -3,73 +3,78 @@ package com.args;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
-
 /**
  * Unit test for simple App.
  */
-public class ArgsAppTest 
-    
+public class ArgsAppTest
+
 {
-    /**
-     * Test to decide whether case is logged or not.
-     *
-     */
-	
+	/**
+	 * Test to decide whether case is logged or not.
+	 *
+	 */
+
 	SchemaFlagIdentifier schemaFlagIdentifier = new SchemaFlagIdentifier();
-	String directoryDefaultValue = "Directory Missing. Please try again.";
-	
+	String directoryDefaultValue = "1";
+
 	@Test
-	public void isLogFlagPresent()
-	{
+	public void isLogFlagPresent() {
 		assertEquals(false, schemaFlagIdentifier.logTrue("-z"));
 		assertEquals(true, schemaFlagIdentifier.logTrue("-l"));
 		assertEquals(false, schemaFlagIdentifier.logTrue("l"));
 	}
-	
-	 /**
-     * Test to decide if port flag is in user input string.
-     *
-     */
-	@Test
-    public void isPortFlagPresent()
-    {
-       assertEquals(1, schemaFlagIdentifier.portFlagValue("5"));
-       assertEquals(8080,schemaFlagIdentifier.portFlagValue("-l -p 8080 -d /usr/logs"));
-       assertEquals(8080, schemaFlagIdentifier.portFlagValue("-l -p 8080 -d /usr/logs"));
-    }
 
 	/**
-	 * Test to decide if directory flag is present in user input string. 
+	 * Test to decide if port flag is in user input string.
+	 *
 	 */
-	
 	@Test
-	public void isDirectoryFlagPresent() {
-		
-		assertEquals(directoryDefaultValue, schemaFlagIdentifier.directoryFlagValue("-l -p 8080"));
-		assertEquals("/usr/logs", schemaFlagIdentifier.directoryFlagValue("-l -p 8080 -d /usr/logs"));
-		
-		
-	}
-
-	@Test
-	public void returnPortValueAsAnInteger() {
-			
+	public void isPortFlagPresent() {
+		assertEquals(1, schemaFlagIdentifier.portFlagValue("5"));
+		assertEquals(8080, schemaFlagIdentifier.portFlagValue("-l -p 8080 -d /usr/logs"));
 		assertEquals(8080, schemaFlagIdentifier.portFlagValue("-l -p 8080 -d /usr/logs"));
 	}
-	
-    /**
-     * The order of the arguments need not match the order given in the schema.
-     */
-    public void outOfOrder()
-    {
-        return;
-    }
 
-    /**
-     * have some tests that suitable default values are correctly assigned if flags given in the schema are missing in the args given.
-     */
-    public void defaultValues()
-    {
-       return;
-    }
+	/**
+	 * Test to decide if directory flag is present in user input string.
+	 */
+
+	@Test
+	public void isDirectoryFlagPresent() {
+
+		assertEquals(directoryDefaultValue, schemaFlagIdentifier.directoryFlagValue("-l -p 8080"));
+		assertEquals("/usr/logs", schemaFlagIdentifier.directoryFlagValue("-l -p 8080 -d /usr/logs"));
+
+	}
+
+	@Test
+	public void portValueAsAnInteger() {
+
+		assertEquals(8080, schemaFlagIdentifier.portFlagValue("-l -p 8080 -d /usr/logs"));
+	}
+
+	/**
+	 * The order of the arguments need not match the order given in the schema.
+	 */
+	public void outOfOrder() {
+
+		return;
+	}
+
+	@Test
+	public void directoryValueAsString() {
+		
+		assertEquals("/usr/logs", schemaFlagIdentifier.directoryFlagValue("-l -p 8080 -d /usr/logs"));
+		assertEquals("/usr/logs", schemaFlagIdentifier.directoryFlagValue("-l -d /usr/logs -p 8080 -d /usr/logs"));
+		
+	}
+
+	/**
+	 * have some tests that suitable default values are correctly assigned if flags
+	 * given in the schema are missing in the args given.
+	 */
+	public void defaultValues() {
+
+		return;
+	}
 }

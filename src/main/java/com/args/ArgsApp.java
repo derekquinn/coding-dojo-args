@@ -10,6 +10,11 @@ public class ArgsApp
     {
     	SchemaFlagIdentifier schemaFlagIdentifier = new SchemaFlagIdentifier();
     	int portFlag = schemaFlagIdentifier.portFlagValue("-l -p 8080 -d /usr/logs");
-        System.out.println(portFlag);
+        System.out.println("PF" + portFlag);
+        
+        String directory = schemaFlagIdentifier.directoryFlagValue("-l -p 8080 -d /usr/logs");
+        
+        System.out.println("Dir" + directory);
+        
     }
 }
