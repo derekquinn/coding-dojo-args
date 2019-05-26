@@ -3,6 +3,7 @@ package com.args;
 public class SchemaFlagIdentifier {
 
 	String directoryDefaultValue = "Directory Missing. Please try again.";
+	String portDefaultValue = "Port missing. Please try again.";
 
 	public boolean logTrue(String input) {
 		if (input.contains("-l")) {
@@ -27,23 +28,24 @@ public class SchemaFlagIdentifier {
 
 			if (input.contains("-d") && directoryIndex > portIndex) {
 				String portString = input.substring(portIndex + 2, directoryIndex);
-				portString = portString.trim();
-				portValue = Integer.parseInt(portString);
-				return portValue;
+				// portString = portString.trim();
+				// portValue = Integer.parseInt(portString);
+				return trimAndParse(portString);
+				// return portValue;
 			}
 
 			if (input.contains("-d") && directoryIndex < portIndex) {
 				String portString = input.substring(portIndex + 2);
-				portString = portString.trim();
-				portValue = Integer.parseInt(portString);
-				return portValue;
+//				portString = portString.trim();
+//				portValue = Integer.parseInt(portString);
+//				return portValue;
+				return trimAndParse(portString);
+
+			} else {
+				return 1;
 			}
-
-			return portValue;
-
-		} else {
-			return 1;
 		}
+		return 1;
 	}
 
 	public String directoryFlagValue(String input) {
@@ -61,14 +63,14 @@ public class SchemaFlagIdentifier {
 
 			if (input.contains("-p") && directoryIndex > portIndex) {
 
-				directory = input.substring(directoryIndex+2);
+				directory = input.substring(directoryIndex + 2);
 				directory = directory.trim();
 				return directory;
 			}
 
 			if (input.contains("-p") && directoryIndex < portIndex) {
 
-				directory = input.substring( directoryIndex + 2, portIndex);
+				directory = input.substring(directoryIndex + 2, portIndex);
 				directory = directory.trim();
 				return directory;
 			}
@@ -80,5 +82,12 @@ public class SchemaFlagIdentifier {
 
 		return "1";
 
+	}
+
+	public int trimAndParse(String portString) {
+		portString = portString.trim();
+		int portValue = Integer.parseInt(portString);
+
+		return portValue;
 	}
 }
