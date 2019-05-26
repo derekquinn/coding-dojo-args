@@ -19,26 +19,19 @@ public class SchemaFlagIdentifier {
 		int portIndex = input.indexOf("-p");
 		int directoryIndex = input.indexOf("-d");
 
-		if (input.contains("-l")) {
-			input.replace("-l", "");
-		}
+		replaceLogFlag(input);
+		
 
 		if (input.contains("-p")) {
 			int portValue = 1;
 
 			if (input.contains("-d") && directoryIndex > portIndex) {
 				String portString = input.substring(portIndex + 2, directoryIndex);
-				// portString = portString.trim();
-				// portValue = Integer.parseInt(portString);
 				return trimAndParse(portString);
-				// return portValue;
 			}
 
 			if (input.contains("-d") && directoryIndex < portIndex) {
 				String portString = input.substring(portIndex + 2);
-//				portString = portString.trim();
-//				portValue = Integer.parseInt(portString);
-//				return portValue;
 				return trimAndParse(portString);
 
 			} else {
@@ -55,23 +48,19 @@ public class SchemaFlagIdentifier {
 		int directoryIndex = input.indexOf("-d");
 		String directory;
 
-		if (input.contains("-l")) {
-			input.replace("-l", "");
-		}
+		replaceLogFlag(input);
 
 		if (input.contains("-d")) {
 
 			if (input.contains("-p") && directoryIndex > portIndex) {
 
-				directory = input.substring(directoryIndex + 2);
-				directory = directory.trim();
+				directory = input.substring(directoryIndex + 2).trim();
 				return directory;
 			}
 
 			if (input.contains("-p") && directoryIndex < portIndex) {
 
-				directory = input.substring(directoryIndex + 2, portIndex);
-				directory = directory.trim();
+				directory = input.substring(directoryIndex + 2, portIndex).trim();
 				return directory;
 			}
 		}
@@ -84,10 +73,17 @@ public class SchemaFlagIdentifier {
 
 	}
 
-	public int trimAndParse(String portString) {
-		portString = portString.trim();
-		int portValue = Integer.parseInt(portString);
-
+	public int trimAndParse(String input) {
+		
+		input = input.trim();
+		int portValue = Integer.parseInt(input);
 		return portValue;
+	}
+	
+	
+	public void replaceLogFlag(String input) {
+		if(input.contains("-1")) {
+			input.replace("-1","");
+		}
 	}
 }
