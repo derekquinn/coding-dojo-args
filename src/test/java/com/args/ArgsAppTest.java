@@ -1,7 +1,11 @@
 package com.args;
 
-import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+
+import java.io.InputStream;
+import java.util.Scanner;
+
+import org.junit.Test;
 
 /**
  * Unit test for simple App.
@@ -53,6 +57,15 @@ public class ArgsAppTest
 		assertEquals(8080, schemaFlagIdentifier.portFlagValue("-l -p 8080 -d /usr/logs"));
 	}
 
+	@Test
+	public void TestingTheArgsApp() {
+		ArgsApp argsApp = new ArgsApp();
+		InputStream stdin = System.in;
+		Scanner scnr = new Scanner(System.in);
+		stdin = -l -p 8080 -d /usr/logs;
+		assertEquals("-l -p 8080 -d /usr/logs", argsApp.getString(scnr, "Please enter user input"));
+	}
+	
 	/**
 	 * The order of the arguments need not match the order given in the schema.
 	 */
@@ -77,4 +90,5 @@ public class ArgsAppTest
 
 		return;
 	}
+	
 }
